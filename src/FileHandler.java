@@ -20,19 +20,21 @@ public class FileHandler {
 
                 if (parts.length == 4) {
                     Anime anime = new Anime();
-                    anime.setTitle(parts[0].trim());
-                    anime.setGenre(parts[1].trim());
-                    anime.setStatus(Status.valueOf(parts[2].trim().toUpperCase()));
+                    anime.setAnimeId(animeList.size() + 1); // Assign a unique ID based on the current list size
+                    anime.setTitle(parts[1].trim());
+                    anime.setGenre(parts[2].trim());
+                    anime.setStatus(Status.valueOf(parts[3].trim().toUpperCase()));
                     try{
-                        anime.setEpisodes(Integer.parseInt(parts[3].trim()));
+                        anime.setEpisodes(Integer.parseInt(parts[4].trim()));
                     } catch (NumberFormatException e) {
-                        System.err.println("Invalid number format for episodes: " + parts[3].trim());
+                        System.err.println("Invalid number format for episodes: " + parts[4].trim());
                         anime.setEpisodes(0); // Default to 0 if parsing fails
                     }
                     animeList.add(anime);
                 } else {
                     System.err.println("Invalid line format: " + line);
                 }
+                sc.close();
             }
         
         } catch (FileNotFoundException e) {
@@ -45,7 +47,7 @@ public class FileHandler {
         try {
             FileWriter writer = new FileWriter(filename);
             for (Anime anime : animeList) {
-                writer.write(anime.getTitle() + "," + anime.getGenre() + "," + anime.getStatus() + "," + anime.getEpisodes() + "\n");
+                writer.write(anime.getAnimeId() + "," + anime.getTitle() + "," + anime.getGenre() + "," + anime.getStatus() + "," + anime.getEpisodes() + "\n");
             }
             writer.close();
         } catch (IOException e) {

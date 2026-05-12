@@ -1,4 +1,5 @@
 public class Anime {
+    private int animeId;
     private String title;
     private String genre;        
     private Status status;
@@ -13,6 +14,13 @@ public class Anime {
 
     public Anime() {
         // Default constructor
+    }
+    public int getAnimeId() {
+        return animeId;
+    }
+
+    public void setAnimeId(int animeId) {
+        this.animeId = animeId;
     }
 
     public String getTitle() {

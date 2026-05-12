@@ -3,29 +3,94 @@ import java.util.*;
 public class AnimeManager {
 
     private ArrayList<Anime> animeList;
+    private int nextAnimeId;
 
     public AnimeManager() {
-        animeList = new ArrayList<>();
+        this.animeList = new ArrayList<>();
+        this.nextAnimeId = determineHighestId() + 1; // Start IDs from 1
     }
+
+    //create
+    public void addAnime(String title, String genre, Status status, int episodes) {
+        Anime anime = new Anime();
+        anime.setAnimeId(generateNextAnimeId());
+        anime.setTitle(title);
+        anime.setGenre(genre);
+        anime.setStatus(status);
+        anime.setEpisodes(episodes);
+        animeList.add(anime);
+    }
+
+    //read
+    public void displayAnimeList() {
+        for (Anime anime : animeList) {
+            System.out.println("ID: " + anime.getAnimeId() + ", Title: " + anime.getTitle() + ", Genre: " + anime.getGenre() + ", Status: " + anime.getStatus() + ", Episodes: " + anime.getEpisodes());
+        }
+    }
+
+    public Anime searchAnimeByTitle(String title) {
+        for (Anime anime : animeList) {
+            if (anime.getTitle().equalsIgnoreCase(title)) {
+                return anime;
+            }
+        }
+        return null; // Return null if not found
+    }
+
+    public Anime searchAnimeById(int id) {
+        for (Anime anime : animeList) {
+            if (anime.getAnimeId() == id) {
+                return anime;
+            }
+        }
+        return null; // Return null if not found
+    }
+
+    //update
+    public void updateEpisodes(int id, int newEpisodes) {
+        Anime anime = searchAnimeById(id);
+        if (anime != null) {
+            anime.setEpisodes(newEpisodes);
+        }
+    }
+
+    //delete
+    public void deleteAnime(int id) {
+        Anime anime = searchAnimeById(id);
+        if (anime != null) {
+            animeList.remove(anime);
+        }
+    }
+
+    //sorting
+
+    public void sortAnimeByTitle() {
+        Collections.sort(animeList, Comparator.comparing(Anime::getTitle));
+    }
+
+    public void sortByEpisodes() {
+        Collections.sort(animeList, Comparator.comparingInt(Anime::getEpisodes));
+    }
+
+    //ID management
+    private int determineHighestId() {
+        int maxId = 0;
+        for (Anime anime : animeList) {
+            if (anime.getAnimeId() > maxId) {
+                maxId = anime.getAnimeId();
+            }
+        }
+        return maxId;
+    }
+
+    private int generateNextAnimeId() {
+        return nextAnimeId++;
+    }
+    
+    //getters
 
     public ArrayList<Anime> getAnimeList() {
         return animeList;
     }
-
-     public void addAnime(Anime anime) {
-        animeList.add(anime);
-    }
-
-    public void searchAnimeByTitle(String title) {
-        for (Anime anime : animeList) {
-            if (anime.getTitle().equalsIgnoreCase(title)) {
-                System.out.println("Found: " + anime.getTitle() + " - " + anime.getGenre() + " - " + anime.getStatus() + " - " + anime.getEpisodes() + " episodes");
-                return;
-            }
-        }
-        System.out.println("Anime not found: " + title);
-    }
-
-    
 
 }
