@@ -7,7 +7,6 @@ public class FileHandler {
     // Implementation will be added later.
     public static ArrayList<Anime> readAnimeFromFile(String filename) {
         ArrayList<Anime> animeList = new ArrayList<>();
-        // Code to read anime data from a file and populate the animeList will go here.
 
         try {
             File file = new File(filename);
@@ -24,13 +23,17 @@ public class FileHandler {
                     anime.setTitle(parts[0].trim());
                     anime.setGenre(parts[1].trim());
                     anime.setStatus(Status.valueOf(parts[2].trim().toUpperCase()));
-                    anime.setEpisodes(Integer.parseInt(parts[3].trim()));
+                    try{
+                        anime.setEpisodes(Integer.parseInt(parts[3].trim()));
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid number format for episodes: " + parts[3].trim());
+                        anime.setEpisodes(0); // Default to 0 if parsing fails
+                    }
                     animeList.add(anime);
                 } else {
                     System.err.println("Invalid line format: " + line);
                 }
             }
-            sc.close();
         
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + filename);
