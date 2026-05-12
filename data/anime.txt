@@ -1,19 +1,19 @@
-Jujutsu Kaisen,Action,24
-Demon Slayer,Action,55
-Solo Leveling,Action,12
-Bungo Stray Dogs,Mystery,61
-Yona of the Dawn,Fantasy,24
-Chainsaw Man,Action,12
-Tokyo Ghoul,Horror,48
-Wistoria: Wand and Sword,Fantasy,12
-Reign of the Seven Spellblades,Fantasy,15
-Black Clover,Action,170
-Sk8 the Infinity,Sports,13
-Spirit Chronicles,Isekai,12
-That Time I Got Reincarnated as a Slime,Isekai,72
-Heaven's Official Blessing,Fantasy,24
-Dan Da Dan,Supernatural,12
-Jobless Reincarnation,Isekai,48
-Cherry Magic: Thirty Years of Virginity Can Make You a Wizard,Romance,12
-Bucchigiri?!,Action,12
-Mashle: Magic and Muscles,Comedy,24
+Jujutsu Kaisen,Action,ONGOING,24
+Demon Slayer,Action,COMPLETED,55
+Solo Leveling,Action,ONGOING,12
+Bungo Stray Dogs,Mystery,ONGOING,61
+Yona of the Dawn,Fantasy,COMPLETED,24
+Chainsaw Man,Action,ONGOING,12
+Tokyo Ghoul,Horror,COMPLETED,48
+Wistoria: Wand and Sword,Fantasy,ONGOING,12
+Reign of the Seven Spellblades,Fantasy,ONGOING,15
+Black Clover,Action,ONGOING,170
+Sk8 the Infinity,Sports,COMPLETED,13
+Spirit Chronicles,Isekai,ONGOING,12
+That Time I Got Reincarnated as a Slime,Isekai,ONGOING,72
+Heaven's Official Blessing,Fantasy,ONGOING,24
+Dan Da Dan,Supernatural,ONGOING,24
+Jobless Reincarnation,Isekai,ONGOING,48
+Cherry Magic: Thirty Years of Virginity Can Make You a Wizard,Romance,COMPLETED,12
+Bucchigiri?!,Action,COMPLETED,12
+Mashle: Magic and Muscles,Comedy,ONGOING,24
