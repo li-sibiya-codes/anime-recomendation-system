@@ -40,4 +40,17 @@ public class FileHandler {
         }
         return animeList;
     }
+
+     public static ArrayList<Anime> saveAnimeToFile(String filename, ArrayList<Anime> animeList) {
+        try {
+            FileWriter writer = new FileWriter(filename);
+            for (Anime anime : animeList) {
+                writer.write(anime.getTitle() + "," + anime.getGenre() + "," + anime.getStatus() + "," + anime.getEpisodes() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + filename);
+        }
+        return animeList;
+    }
 }
