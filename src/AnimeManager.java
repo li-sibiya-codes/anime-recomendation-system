@@ -63,7 +63,6 @@ public class AnimeManager {
     }
 
     //sorting
-
     public void sortAnimeByTitle() {
         Collections.sort(animeList, Comparator.comparing(Anime::getTitle));
     }
