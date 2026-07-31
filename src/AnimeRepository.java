@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class DatabaseManager {
+public class AnimeRepository {
     // This class will handle file operations such as reading and writing anime data to a file.
     // Implementation will be added later.
     public static ArrayList<Anime> readAnimeFromFile(String filename) {
