@@ -12,12 +12,8 @@ public class AnimeManager {
 
     //create
     public void addAnime(String title, String genre, Status status, int episodes) {
-        Anime anime = new Anime();
+        Anime anime = new Anime(title, genre, status, episodes);
         anime.setAnimeId(generateNextAnimeId());
-        anime.setTitle(title);
-        anime.setGenre(genre);
-        anime.setStatus(status);
-        anime.setEpisodes(episodes);
         animeList.add(anime);
     }
 

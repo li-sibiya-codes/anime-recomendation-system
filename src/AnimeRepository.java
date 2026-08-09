@@ -18,18 +18,21 @@ public class AnimeRepository {
                 
                 String[] parts = line.split(",");
 
-                if (parts.length == 4) {
-                    Anime anime = new Anime();
-                    anime.setAnimeId(animeList.size() + 1); // Assign a unique ID based on the current list size
-                    anime.setTitle(parts[1].trim());
-                    anime.setGenre(parts[2].trim());
-                    anime.setStatus(Status.valueOf(parts[3].trim().toUpperCase()));
-                    try{
-                        anime.setEpisodes(Integer.parseInt(parts[4].trim()));
+                int animeId = Integer.parseInt(parts[0].trim());
+                String title = parts[1].trim();
+                String genre = parts[2].trim();
+                Status status = Status.valueOf(parts[3].trim().toUpperCase());
+                int episodes;
+                try{
+                        episodes = Integer.parseInt(parts[4].trim());
                     } catch (NumberFormatException e) {
                         System.err.println("Invalid number format for episodes: " + parts[4].trim());
-                        anime.setEpisodes(0); // Default to 0 if parsing fails
+                        episodes = 0; // Default to 0 if parsing fails
                     }
+
+                if (parts.length == 5) {
+                    Anime anime = new Anime(title, genre, status, episodes);
+                    anime.setAnimeId(animeId);
                     animeList.add(anime);
                 } else {
                     System.err.println("Invalid line format: " + line);

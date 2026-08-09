@@ -5,16 +5,13 @@ public class Anime {
     private Status status;
     private int episodes;
 
-    /*public Anime(String title, String genre, Status status, int episodes) {
+    public Anime(String title, String genre, Status status, int episodes) {
         this.title = title;
         this.genre = genre;
         this.status = status;
         this.episodes = episodes;
-    } */
-
-    public Anime() {
-        // Default constructor
     }
+
     public int getAnimeId() {
         return animeId;
     }
