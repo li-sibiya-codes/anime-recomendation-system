@@ -8,10 +8,7 @@ public class AnimeRepository {
     public static ArrayList<Anime> readAnimeFromFile(String filename) {
         ArrayList<Anime> animeList = new ArrayList<>();
 
-        try {
-            File file = new File(filename);
-            Scanner sc = new Scanner(file);
-
+        try (Scanner sc = new Scanner(new File(filename))) {
             while (sc.hasNextLine()) {
 
                 String line = sc.nextLine();
@@ -46,7 +43,7 @@ public class AnimeRepository {
         return animeList;
     }
 
-     public static ArrayList<Anime> saveAnimeToFile(String filename, ArrayList<Anime> animeList) {
+     public static void saveAnimeToFile(String filename, ArrayList<Anime> animeList) {
         try {
             FileWriter writer = new FileWriter(filename);
             for (Anime anime : animeList) {
@@ -56,6 +53,5 @@ public class AnimeRepository {
         } catch (IOException e) {
             System.err.println("Error writing to file: " + filename);
         }
-        return animeList;
     }
 }

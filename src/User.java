@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.*;
 
 public class User {
     private int userId;
@@ -14,6 +14,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.preferences = preferences;
+        this.animeList = new ArrayList<>();
     }
 
     public int getUserId() {

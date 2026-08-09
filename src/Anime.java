@@ -49,6 +49,9 @@ public class Anime {
     }
 
     public void setEpisodes(int episodes) {
+        if (episodes < 0) {
+            throw new IllegalArgumentException("Episodes cannot be negative.");
+        }
         this.episodes = episodes;
     }
 }

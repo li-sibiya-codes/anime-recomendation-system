@@ -5,8 +5,8 @@ public class AnimeManager {
     private ArrayList<Anime> animeList;
     private int nextAnimeId;
 
-    public AnimeManager() {
-        this.animeList = new ArrayList<>();
+    public AnimeManager(ArrayList<Anime> animeList) {
+        this.animeList = new ArrayList<>(animeList);
         this.nextAnimeId = determineHighestId() + 1; // Start IDs from 1
     }
 
@@ -43,19 +43,23 @@ public class AnimeManager {
     }
 
     //update
-    public void updateEpisodes(int id, int newEpisodes) {
+    public boolean updateEpisodes(int id, int newEpisodes) {
         Anime anime = searchAnimeById(id);
         if (anime != null) {
             anime.setEpisodes(newEpisodes);
+            return true;
         }
+        return false;
     }
 
     //delete
-    public void deleteAnime(int id) {
+    public boolean deleteAnime(int id) {
         Anime anime = searchAnimeById(id);
         if (anime != null) {
             animeList.remove(anime);
+            return true;
         }
+        return false;
     }
 
     //sorting
@@ -84,8 +88,8 @@ public class AnimeManager {
     
     //getters
 
-    public ArrayList<Anime> getAnimeList() {
-        return animeList;
+    public List<Anime> getAnimeList() {
+        return Collections.unmodifiableList(animeList);
     }
 
 }
