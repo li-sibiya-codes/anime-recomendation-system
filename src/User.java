@@ -6,7 +6,7 @@ public class User {
     private String lastName;
     private String email;
     private UserPreferences preferences;
-    private List<UserAnime> animeList;
+    private List<UserAnime> userAnimeList;
 
     public User (int userId, String firstName, String lastName, String email, UserPreferences preferences) {
         this.userId = userId;
@@ -14,7 +14,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.preferences = preferences;
-        this.animeList = new ArrayList<>();
+        this.userAnimeList = new ArrayList<>();
     }
 
     public int getUserId() {
@@ -51,6 +51,10 @@ public class User {
     public UserPreferences getPreferences() {
         return preferences;
     }
+
+    public List<UserAnime> getUserAnimeList() {
+        return userAnimeList;
+}
 
 
 }
