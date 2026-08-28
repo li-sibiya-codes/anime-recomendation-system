@@ -5,6 +5,8 @@ import com.animerecomender.model.User;
 import com.animerecomender.model.UserAnime;
 import com.animerecomender.model.UserAnimeStatus;
 import com.animerecomender.model.UserPreferences;
+import com.animerecomender.data.AnimeRepository;
+import com.animerecomender.service.AnimeManager;
 import java.util.ArrayList;
 
 public class Main {
@@ -13,7 +15,18 @@ public class Main {
         // We will initialize the AnimeManager and FileHandler here in the future.
         //gui goes here 
 
-        ArrayList<Anime> animeList = AnimeRepository.readAnimeFromFile("anime_data.txt");
+        // Read anime data from file and display it
+        ArrayList<Anime> animeList = AnimeRepository.readAnimeFromFile("data/anime.txt");
+        System.out.println("Anime List from File:");
+        for (Anime anime : animeList) {
+            System.out.println("ID: " + anime.getAnimeId() + ", Title: " + anime.getTitle() + ", Genre: " + anime.getGenre() + ", Status: " + anime.getStatus() + ", Episodes: " + anime.getEpisodes());
+        }
+        System.out.println();
+
+        // Initialize AnimeManager with the list of anime read from the file 
+        // This will allow us to manage the anime data in memory
+        AnimeManager animeManager = new AnimeManager(animeList);
+
 
         // Testing
         Anime dOTSR = new Anime("Daemons of The Shadow Realm", "Action, Adventure, Supernatural", AnimeStatus.ONGOING, 15);
