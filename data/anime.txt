@@ -1,18 +1,18 @@
-1,Jujutsu Kaisen,Action,ONGOING,24
-2,Demon Slayer,Action,COMPLETED,55
-3,Solo Leveling,Action,ONGOING,24
-4,Bungo Stray Dogs,Mystery,ONGOING,61
-5,Yona of the Dawn,Fantasy,COMPLETED,24
-6,Chainsaw Man,Action,ONGOING,12
-7,Tokyo Ghoul,Horror,COMPLETED,48
-8,Wistoria: Wand and Sword,Fantasy,ONGOING,12
-9,Reign of the Seven Spellblades,Fantasy,ONGOING,15
-10,Black Clover,Action,ONGOING,170
-11,Sk8 the Infinity,Sports,COMPLETED,13
-12,That Time I Got Reincarnated as a Slime,Isekai,ONGOING,72
-13,Heaven's Official Blessing,Fantasy,ONGOING,24
-14,Dan Da Dan,Supernatural,ONGOING,24
-15,Jobless Reincarnation,Isekai,ONGOING,48
-16,Cherry Magic: Thirty Years of Virginity Can Make You a Wizard,Romance,COMPLETED,12
-17,Bucchigiri?!,Action,COMPLETED,12
-18,Mashle: Magic and Muscles,Comedy,ONGOING,24
+1,Jujutsu Kaisen,Action,ONGOING,4.9,24
+2,Demon Slayer,Action,COMPLETED,4.9,55
+3,Solo Leveling,Action,ONGOING,4.9,24
+4,Bungo Stray Dogs,Mystery,ONGOING,4.8,61
+5,Yona of the Dawn,Fantasy,COMPLETED,4.8,24
+6,Chainsaw Man,Action,ONGOING,4.9,12
+7,Tokyo Ghoul,Horror,COMPLETED,4.6,50
+8,Wistoria: Wand and Sword,Fantasy,ONGOING,4.8,12
+9,Reign of the Seven Spellblades,Fantasy,ONGOING,4.2,15
+10,Black Clover,Action,ONGOING,4.8,170
+11,Sk8 the Infinity,Sports,COMPLETED,4.9,13
+12,That Time I Got Reincarnated as a Slime,Isekai,ONGOING,4.9,72
+13,Heaven's Official Blessing,Fantasy,ONGOING,4.9,24
+14,Dan Da Dan,Supernatural,ONGOING,4.8,24
+15,Jobless Reincarnation,Isekai,ONGOING,4.7,48
+16,Cherry Magic: Thirty Years of Virginity Can Make You a Wizard,Romance,COMPLETED,4.7,12
+17,Bucchigiri?!,Action,COMPLETED,4.1,12
+18,Mashle: Magic and Muscles,Comedy,ONGOING,4.8,24

@@ -23,16 +23,23 @@ public class AnimeRepository {
                 String title = parts[1].trim();
                 String genre = parts[2].trim();
                 AnimeStatus status = AnimeStatus.valueOf(parts[3].trim().toUpperCase());
+                double rating;
+                try {
+                    rating = Double.parseDouble(parts[4].trim());
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid number format for rating: " + parts[4].trim());
+                    rating = 0.0; // Default to 0.0 if parsing fails
+                }
                 int episodes;
                 try{
-                        episodes = Integer.parseInt(parts[4].trim());
+                        episodes = Integer.parseInt(parts[5].trim());
                     } catch (NumberFormatException e) {
-                        System.err.println("Invalid number format for episodes: " + parts[4].trim());
+                        System.err.println("Invalid number format for episodes: " + parts[5].trim());
                         episodes = 0; // Default to 0 if parsing fails
                     }
 
-                if (parts.length == 5) {
-                    Anime anime = new Anime(title, genre, status, episodes);
+                if (parts.length == 6) {
+                    Anime anime = new Anime(title, genre, status, rating, episodes);
                     anime.setAnimeId(animeId);
                     animeList.add(anime);
                 } else {
@@ -51,7 +58,7 @@ public class AnimeRepository {
         try {
             FileWriter writer = new FileWriter(filename);
             for (Anime anime : animeList) {
-                writer.write(anime.getAnimeId() + "," + anime.getTitle() + "," + anime.getGenre() + "," + anime.getStatus() + "," + anime.getEpisodes() + "\n");
+                writer.write(anime.getAnimeId() + "," + anime.getTitle() + "," + anime.getGenre() + "," + anime.getStatus() + "," + anime.getRating() + "," + anime.getEpisodes() + "\n");
             }
             writer.close();
         } catch (IOException e) {

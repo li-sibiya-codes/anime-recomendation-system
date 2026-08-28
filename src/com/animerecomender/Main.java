@@ -19,7 +19,7 @@ public class Main {
         ArrayList<Anime> animeList = AnimeRepository.readAnimeFromFile("data/anime.txt");
         System.out.println("Anime List from File:");
         for (Anime anime : animeList) {
-            System.out.println("ID: " + anime.getAnimeId() + ", Title: " + anime.getTitle() + ", Genre: " + anime.getGenre() + ", Status: " + anime.getStatus() + ", Episodes: " + anime.getEpisodes());
+            System.out.println("ID: " + anime.getAnimeId() + ", Title: " + anime.getTitle() + ", Genre: " + anime.getGenre() + ", Status: " + anime.getStatus() + ", Rating: " + anime.getRating() + ", Episodes: " + anime.getEpisodes());
         }
         System.out.println();
 
@@ -29,7 +29,7 @@ public class Main {
 
 
         // Testing
-        Anime dOTSR = new Anime("Daemons of The Shadow Realm", "Action, Adventure, Supernatural", AnimeStatus.ONGOING, 15);
+        Anime dOTSR = new Anime("Daemons of The Shadow Realm", "Action, Adventure, Supernatural", AnimeStatus.ONGOING, 4.0, 15);
         
         //creating preferences for user
         UserPreferences preferences = new UserPreferences();
