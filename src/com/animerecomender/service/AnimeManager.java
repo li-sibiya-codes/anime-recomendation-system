@@ -1,4 +1,8 @@
+package com.animerecomender.service;
 import java.util.*;
+
+import com.animerecomender.model.Anime;
+import com.animerecomender.model.AnimeStatus;
 
 public class AnimeManager {
 

@@ -1,3 +1,4 @@
+package com.animerecomender.model;
 import java.util.*;
 
 public class User {

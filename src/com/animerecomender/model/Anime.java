@@ -1,3 +1,4 @@
+package com.animerecomender.model;
 public class Anime {
     private int animeId;
     private String title;

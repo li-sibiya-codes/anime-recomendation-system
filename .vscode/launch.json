@@ -4,7 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.animerecomender.Main",
+            "projectName": "anime-recomendation-system_8bc6df25"
+        },
         {
             "type": "java",
             "name": "Main",

@@ -1,5 +1,9 @@
+package com.animerecomender.data;
 import java.io.*;
 import java.util.*;
+
+import com.animerecomender.model.Anime;
+import com.animerecomender.model.AnimeStatus;
 
 
 public class AnimeRepository {
@@ -34,8 +38,8 @@ public class AnimeRepository {
                 } else {
                     System.err.println("Invalid line format: " + line);
                 }
-                sc.close();
             }
+            sc.close();
         
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + filename);

@@ -1,8 +1,19 @@
+package com.animerecomender;
+import com.animerecomender.model.Anime;
+import com.animerecomender.model.AnimeStatus;
+import com.animerecomender.model.User;
+import com.animerecomender.model.UserAnime;
+import com.animerecomender.model.UserAnimeStatus;
+import com.animerecomender.model.UserPreferences;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         // This is the entry point of the application.
         // We will initialize the AnimeManager and FileHandler here in the future.
         //gui goes here 
+
+        ArrayList<Anime> animeList = AnimeRepository.readAnimeFromFile("anime_data.txt");
 
         // Testing
         Anime dOTSR = new Anime("Daemons of The Shadow Realm", "Action, Adventure, Supernatural", AnimeStatus.ONGOING, 15);

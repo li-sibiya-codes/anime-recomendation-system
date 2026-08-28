@@ -1,3 +1,5 @@
+package com.animerecomender.model;
+
 public class UserAnime {
     //represents one users interaction with one anime
     private Anime anime;
