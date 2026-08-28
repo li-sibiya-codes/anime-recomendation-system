@@ -1,11 +1,11 @@
 public class UserAnime {
     //represents one users interaction with one anime
     private Anime anime;
-    private Status status;
+    private UserAnimeStatus status;
     private int episodesWatched;
     private double rating; 
 
-    public UserAnime(Anime anime, Status status, int episodesWatched, double rating) {
+    public UserAnime(Anime anime, UserAnimeStatus status, int episodesWatched, double rating) {
         this.anime = anime;
         this.status = status;
         this.episodesWatched = episodesWatched;
@@ -17,11 +17,11 @@ public class UserAnime {
         return anime;
     }
 
-    public Status getStatus() {
+    public UserAnimeStatus getUserAnimeStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setUserAnimeStatus(UserAnimeStatus status) {
         this.status = status;
     }
 

@@ -1,3 +1,3 @@
-public enum Status {
+public enum AnimeStatus {
         ONGOING, COMPLETED, CANCELLED
     }   

@@ -2,10 +2,10 @@ public class Anime {
     private int animeId;
     private String title;
     private String genre;        
-    private Status status;
+    private AnimeStatus status;
     private int episodes;
 
-    public Anime(String title, String genre, Status status, int episodes) {
+    public Anime(String title, String genre, AnimeStatus status, int episodes) {
         this.title = title;
         this.genre = genre;
         this.status = status;
@@ -36,11 +36,11 @@ public class Anime {
         this.genre = genre;
     }
 
-    public Status getStatus() {
+    public AnimeStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(AnimeStatus status) {
         this.status = status;
     } 
 

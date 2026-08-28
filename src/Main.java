@@ -5,7 +5,7 @@ public class Main {
         //gui goes here 
 
         // Testing
-        Anime dOTSR = new Anime("Daemons of The Shadow Realm", "Action, Adventure, Supernatural", Status.ONGOING, 15);
+        Anime dOTSR = new Anime("Daemons of The Shadow Realm", "Action, Adventure, Supernatural", AnimeStatus.ONGOING, 15);
         
         //creating preferences for user
         UserPreferences preferences = new UserPreferences();
@@ -18,7 +18,7 @@ public class Main {
         User user = new User(1, "John", "Doe", "john.doe@example.com", preferences);
 
         //Creating UserAnime object to associate user with anime
-        UserAnime dOTSRInteraction = new UserAnime(dOTSR, Status.ONGOING, 10, 8.5);
+        UserAnime dOTSRInteraction = new UserAnime(dOTSR, UserAnimeStatus.WATCHING, 10, 8.5);
 
         //adding userAnime to user's list
         user.getUserAnimeList().add(dOTSRInteraction);
@@ -36,7 +36,7 @@ public class Main {
 
         for (UserAnime userAnime : user.getUserAnimeList()) {
             System.out.println("Anime Title: " + userAnime.getAnime().getTitle());
-            System.out.println("Status: " + userAnime.getStatus());
+            System.out.println("Status: " + userAnime.getUserAnimeStatus());
             System.out.println("Episodes Watched: " + userAnime.getEpisodesWatched());
             System.out.println("Rating: " + userAnime.getRating());
         }

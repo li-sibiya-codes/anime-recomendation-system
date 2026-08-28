@@ -18,7 +18,7 @@ public class AnimeRepository {
                 int animeId = Integer.parseInt(parts[0].trim());
                 String title = parts[1].trim();
                 String genre = parts[2].trim();
-                Status status = Status.valueOf(parts[3].trim().toUpperCase());
+                AnimeStatus status = AnimeStatus.valueOf(parts[3].trim().toUpperCase());
                 int episodes;
                 try{
                         episodes = Integer.parseInt(parts[4].trim());
