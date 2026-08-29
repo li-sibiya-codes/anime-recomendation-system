@@ -62,14 +62,54 @@ public class RecommendationEngine {
         return recommendations;
 
     }
+    /**
+     * Calculates how well an anime matches the user's preferences.
+     *
+     * Currently the score is based on genre preferences.
+     *
+     * For anime with multiple genres, the average preference
+     * of the matching genres is used. This prevents anime from
+     * receiving a higher score simply because they have more genres.
+     *
+     * Example:
+     *
+     * User preferences:
+     * Action = 8
+     * Comedy = 6
+     *
+     * Anime genres:
+     * Action, Comedy
+     *
+     * Score:
+     * (8 + 6) / 2 = 7
+     *
+     * @param anime the anime being scored
+     * @param preferences the user's preferences
+     * @return the anime's recommendation score
+     */
 
     private double calculateScore(Anime anime, UserPreferences preferences) {
-        String[] genres = anime.getGenre().split(",\\s*");
+        //get anime genres
         double score = 0.0;
+        int matchedGenres = 0;
 
-        // Calculate score based on genre preferences
-        for (String genre : genres) {
-            score += preferences.getGenrePreference(genre.trim());
+        // check each genre of the anime against the user's preferences and add to score
+        for (String genre : anime.getGenres()) {
+
+            String trimmedGenre = genre.trim();
+
+            int genrePreference = preferences.getGenrePreference(trimmedGenre);
+            // pref of 0 means:
+            // - user gave the genre a rating of 0
+            // - user has no preference for the genre
+            if (genrePreference > 0) {
+                score += genrePreference;
+                matchedGenres++;
+            }
+        }
+
+        if (matchedGenres == 0) {
+            return 0.0;
         }
 
         /*// get rating preference and add to score
@@ -83,11 +123,15 @@ public class RecommendationEngine {
 
         // get other preferences and add to score (if implemented in the future)
         // otherwise just return the score based on the above preferences */
-        return score;
+
+        // return the average score for the matched genres
+        return score/matchedGenres; 
     }
 
     private boolean userHasWatched(User user, Anime anime) {
+        
         for (UserAnime userAnime : user.getUserAnimeList()) {
+            
             if (userAnime.getAnime().getAnimeId() == anime.getAnimeId()) {
                 return true;
             }

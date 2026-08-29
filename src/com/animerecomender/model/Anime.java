@@ -1,15 +1,16 @@
 package com.animerecomender.model;
+import java.util.List;
 public class Anime {
     private int animeId;
     private String title;
-    private String genre;        
+    private List<String> genres;
     private AnimeStatus status;
     private int episodes;
     private double rating;
 
-    public Anime(String title, String genre, AnimeStatus status, double rating, int episodes) {
+    public Anime(String title, List<String> genres, AnimeStatus status, double rating, int episodes) {
         this.title = title;
-        this.genre = genre;
+        this.genres = genres;
         this.status = status;
         this.rating = rating;
         this.episodes = episodes;
@@ -31,12 +32,12 @@ public class Anime {
         this.title = title;
     }
 
-    public String getGenre() {
-        return genre;
+    public List<String> getGenres() {
+        return genres;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
     }
 
     public AnimeStatus getStatus() {

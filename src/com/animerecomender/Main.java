@@ -7,7 +7,7 @@ import com.animerecomender.model.UserAnimeStatus;
 import com.animerecomender.model.UserPreferences;
 import com.animerecomender.data.AnimeRepository;
 import com.animerecomender.service.AnimeManager;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class Main {
         ArrayList<Anime> animeList = AnimeRepository.readAnimeFromFile("data/anime.txt");
         System.out.println("Anime List from File:");
         for (Anime anime : animeList) {
-            System.out.println("ID: " + anime.getAnimeId() + ", Title: " + anime.getTitle() + ", Genre: " + anime.getGenre() + ", Status: " + anime.getStatus() + ", Rating: " + anime.getRating() + ", Episodes: " + anime.getEpisodes());
+            System.out.println("ID: " + anime.getAnimeId() + ", Title: " + anime.getTitle() + ", Genres: " + anime.getGenres() + ", Status: " + anime.getStatus() + ", Rating: " + anime.getRating() + ", Episodes: " + anime.getEpisodes());
         }
         System.out.println();
 
@@ -29,7 +29,7 @@ public class Main {
 
 
         // Testing
-        Anime dOTSR = new Anime("Daemons of The Shadow Realm", "Action, Adventure, Supernatural", AnimeStatus.ONGOING, 4.0, 15);
+        Anime dOTSR = new Anime("Daemons of The Shadow Realm", List.of("Action", "Adventure", "Supernatural"), AnimeStatus.ONGOING, 4.0, 15);
         
         //creating preferences for user
         UserPreferences preferences = new UserPreferences();

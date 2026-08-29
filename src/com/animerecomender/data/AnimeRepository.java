@@ -17,11 +17,12 @@ public class AnimeRepository {
 
                 String line = sc.nextLine();
                 
-                String[] parts = line.split(",");
+                String[] parts = line.split("\\|");
 
                 int animeId = Integer.parseInt(parts[0].trim());
                 String title = parts[1].trim();
-                String genre = parts[2].trim();
+                String[] genreArray = parts[2].trim().split(",\\s*");
+                List<String> genres = Arrays.asList(genreArray);
                 AnimeStatus status = AnimeStatus.valueOf(parts[3].trim().toUpperCase());
                 double rating;
                 try {
@@ -39,7 +40,7 @@ public class AnimeRepository {
                     }
 
                 if (parts.length == 6) {
-                    Anime anime = new Anime(title, genre, status, rating, episodes);
+                    Anime anime = new Anime(title, genres, status, rating, episodes);
                     anime.setAnimeId(animeId);
                     animeList.add(anime);
                 } else {
@@ -58,7 +59,7 @@ public class AnimeRepository {
         try {
             FileWriter writer = new FileWriter(filename);
             for (Anime anime : animeList) {
-                writer.write(anime.getAnimeId() + "," + anime.getTitle() + "," + anime.getGenre() + "," + anime.getStatus() + "," + anime.getRating() + "," + anime.getEpisodes() + "\n");
+                writer.write(anime.getAnimeId() + "," + anime.getTitle() + "," + String.join(", ", anime.getGenres()) + "," + anime.getStatus() + "," + anime.getRating() + "," + anime.getEpisodes() + "\n");
             }
             writer.close();
         } catch (IOException e) {

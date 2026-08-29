@@ -15,8 +15,8 @@ public class AnimeManager {
     }
 
     //create
-    public void addAnime(String title, String genre, AnimeStatus status, double rating, int episodes) {
-        Anime anime = new Anime(title, genre, status, rating, episodes);
+    public void addAnime(String title, List<String> genres, AnimeStatus status, double rating, int episodes) {
+        Anime anime = new Anime(title, genres, status, rating, episodes);
         anime.setAnimeId(generateNextAnimeId());
         animeList.add(anime);
     }
@@ -24,7 +24,7 @@ public class AnimeManager {
     //read
     public void displayAnimeList() {
         for (Anime anime : animeList) {
-            System.out.println("ID: " + anime.getAnimeId() + ", Title: " + anime.getTitle() + ", Genre: " + anime.getGenre() + ", Status: " + anime.getStatus() + ", Rating: " + anime.getRating() + ", Episodes: " + anime.getEpisodes());
+            System.out.println("ID: " + anime.getAnimeId() + ", Title: " + anime.getTitle() + ", Genres: " + anime.getGenres() + ", Status: " + anime.getStatus() + ", Rating: " + anime.getRating() + ", Episodes: " + anime.getEpisodes());
         }
     }
 
