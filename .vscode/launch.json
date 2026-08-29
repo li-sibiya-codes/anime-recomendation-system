@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RecommenationEngineTesting",
+            "request": "launch",
+            "mainClass": "com.animerecomender.RecommenationEngineTesting",
+            "projectName": "anime-recomendation-system_8bc6df25"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "com.animerecomender.Main",
