@@ -16,25 +16,58 @@ For example, the fact that an anime is ongoing is a property of the anime. Wheth
 - Representing an anime in the application.
 - Storing the anime's relevant metadata.
 - Providing access to the anime's properties through its methods.
-- Maintaining the anime's own status and other intrinsic information.
-- Providing anime information to other parts of the application.
-- Acting as an input to the recommendation system when the anime's properties are evaluated against a user's preferences.
+- Allowing the anime's properties to be modified through setter methods.
+- Representing the anime's release status using AnimeStatus.
+- Validating certain values, such as ratings and episode counts.
 
-## Anime Information
-An **Anime** object may contain information used to describe and identify the anime.
+## Attributes
+The **Anime** class currently contains six attributes.
 
-The exact fields should correspond to the current implementation of the class. Depending on the current version of the system, this can include information such as:
+| **Attribute** | **Type** | **Description** |
+|---|---|---|
+| `animeId` | `int` | A unique identifier for the anime. |
+| `title` | `String` | The title of the anime. |
+| `genre` | `String` | The genre associated with the anime. |
+| `status` | `AnimeStatus` | The current status of the anime. |
+| `episodes` | `int` | The number of episodes associated with the anime. |
+| `rating` | `double` | The anime's rating on a scale from 0 to 10. |
 
-|**Information** | **Description**                                    |
-|-----------------|---------------------------------------------------|
-|Title	          |The name of the anime                              |
-|Genre	          |The genre associated with the anime                |
-|Status	          |The release/completion status of the anime         |
-|Source	          |The original source material or format of the anime|
-|Rating	          |Rating information associated with the anime       |
-|ID	              |A unique identifier for the anime                  |
+### `animeId`
 
-These properties describe the anime itself and are therefore distinct from information stored in UserAnime.
+`animeId` identifies an anime within the system.
+
+It is not assigned through the constructor and therefore initially has Java's default integer value of `0`. It can be assigned later using `setAnimeId()`.
+
+### `title`
+
+`title` stores the name of the anime.
+
+### `genre`
+
+`genre` stores the genre information associated with the anime.
+
+The current implementation represents the genre as a single `String`.
+
+### `status`
+
+`status` stores the anime's release status using the `AnimeStatus` enum.
+
+Using an enum allows the application to represent the status using predefined values.
+
+### `rating`
+
+`rating` stores the anime's rating.
+
+The current implementation uses a scale from `0` to `10`.
+
+The class prevents ratings outside this range from being assigned.
+
+## Constructor
+
+The `Anime` class currently has one constructor:
+
+java
+public Anime(String title, String genre, AnimeStatus status, double rating, int episodes)
 
 ## Anime Status
 The anime's release status is represented using the ***AnimeStatus*** enum rather than an arbitrary string.
