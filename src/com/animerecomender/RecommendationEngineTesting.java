@@ -10,7 +10,7 @@ import com.animerecomender.model.UserAnimeStatus;
 import com.animerecomender.model.UserPreferences;
 import com.animerecomender.recomendation.RecommendationEngine;
 
-public class RecommenationEngineTesting {
+public class RecommendationEngineTesting {
 
     public static void main(String[] args) {
         
