@@ -9,7 +9,8 @@
             "name": "RecommendationEngineTesting",
             "request": "launch",
             "mainClass": "com.animerecomender.RecommendationEngineTesting",
-            "projectName": "anime-recomendation-system_8bc6df25"
+            "projectName": "anime-recomendation-system_8bc6df25",
+            "vmArgs": "-ea"
         },
         {
             "type": "java",
