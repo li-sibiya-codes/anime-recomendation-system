@@ -17,7 +17,6 @@ public class AnimeManager {
     //create
     public void addAnime(String title, List<String> genres, AnimeStatus status, double rating, int episodes) {
         Anime anime = new Anime(title, genres, status, rating, episodes);
-        anime.setAnimeId(generateNextAnimeId());
         animeList.add(anime);
     }
 
@@ -84,10 +83,6 @@ public class AnimeManager {
             }
         }
         return maxId;
-    }
-
-    private int generateNextAnimeId() {
-        return nextAnimeId++;
     }
     
     //getters

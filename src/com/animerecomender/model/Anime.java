@@ -1,7 +1,8 @@
 package com.animerecomender.model;
 import java.util.List;
 public class Anime {
-    private int animeId;
+    private static int nextAnimeID = 1;
+    private final int animeId;
     private String title;
     private List<String> genres;
     private AnimeStatus status;
@@ -9,6 +10,7 @@ public class Anime {
     private double rating;
 
     public Anime(String title, List<String> genres, AnimeStatus status, double rating, int episodes) {
+        this.animeId = nextAnimeID++;
         this.title = title;
         this.genres = genres;
         this.status = status;
@@ -18,10 +20,6 @@ public class Anime {
 
     public int getAnimeId() {
         return animeId;
-    }
-
-    public void setAnimeId(int animeId) {
-        this.animeId = animeId;
     }
 
     public String getTitle() {

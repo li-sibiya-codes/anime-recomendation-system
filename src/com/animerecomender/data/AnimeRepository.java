@@ -41,7 +41,6 @@ public class AnimeRepository {
 
                 if (parts.length == 6) {
                     Anime anime = new Anime(title, genres, status, rating, episodes);
-                    anime.setAnimeId(animeId);
                     animeList.add(anime);
                 } else {
                     System.err.println("Invalid line format: " + line);

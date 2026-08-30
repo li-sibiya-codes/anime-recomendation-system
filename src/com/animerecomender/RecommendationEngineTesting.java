@@ -141,6 +141,13 @@ public class RecommendationEngineTesting {
 
         user.getUserAnimeList().add(interaction);
 
+        // TEMP Debugging code
+        System.out.println("Watched Anime ID: " + watchedAnime.getAnimeId());
+
+System.out.println("Interaction Anime ID: " + interaction.getAnime().getAnimeId());
+
+System.out.println("Unwatched Anime ID: " + unWatchedAnime.getAnimeId());
+
         List<Anime> animeList = List.of(watchedAnime,unWatchedAnime);
 
         RecommendationEngine engine = new RecommendationEngine();
