@@ -6,14 +6,16 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private String username;
     private UserPreferences preferences;
     private List<UserAnime> userAnimeList;
 
-    public User (int userId, String firstName, String lastName, String email, UserPreferences preferences) {
+    public User (int userId, String firstName, String lastName, String email, String username, UserPreferences preferences) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.username = username;
         this.preferences = preferences;
         this.userAnimeList = new ArrayList<>();
     }
@@ -43,6 +45,14 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public void setPreferences(UserPreferences preferences) {

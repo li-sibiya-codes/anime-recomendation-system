@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DatabaseConnection",
+            "request": "launch",
+            "mainClass": "com.animerecomender.data.DatabaseConnection",
+            "projectName": "anime-recomendation-system_8bc6df25"
+        },
+        {
+            "type": "java",
             "name": "RecommendationEngineTesting",
             "request": "launch",
             "mainClass": "com.animerecomender.RecommendationEngineTesting",
