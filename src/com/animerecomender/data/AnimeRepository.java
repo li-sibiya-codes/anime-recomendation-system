@@ -1,68 +1,122 @@
 package com.animerecomender.data;
-import java.io.*;
-import java.util.*;
 
 import com.animerecomender.model.Anime;
 import com.animerecomender.model.AnimeStatus;
-
+import java.sql.*;
+import java.util.*;
 
 public class AnimeRepository {
-    // This class will handle file operations such as reading and writing anime data to a file.
-    // Implementation will be added later.
-    public static ArrayList<Anime> readAnimeFromFile(String filename) {
+
+    public static ArrayList<Anime> GetAllAnime() {
+
         ArrayList<Anime> animeList = new ArrayList<>();
 
-        try (Scanner sc = new Scanner(new File(filename))) {
-            while (sc.hasNextLine()) {
+        String sql = """
+                SELECT *
+                FROM anime
+                ORDER BY anime_id
+                """;
 
-                String line = sc.nextLine();
-                
-                String[] parts = line.split("\\|");
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
 
-                int animeId = Integer.parseInt(parts[0].trim());
-                String title = parts[1].trim();
-                String[] genreArray = parts[2].trim().split(",\\s*");
-                List<String> genres = Arrays.asList(genreArray);
-                AnimeStatus status = AnimeStatus.valueOf(parts[3].trim().toUpperCase());
-                double rating;
-                try {
-                    rating = Double.parseDouble(parts[4].trim());
-                } catch (NumberFormatException e) {
-                    System.err.println("Invalid number format for rating: " + parts[4].trim());
-                    rating = 0.0; // Default to 0.0 if parsing fails
-                }
-                int episodes;
-                try{
-                        episodes = Integer.parseInt(parts[5].trim());
-                    } catch (NumberFormatException e) {
-                        System.err.println("Invalid number format for episodes: " + parts[5].trim());
-                        episodes = 0; // Default to 0 if parsing fails
-                    }
+            while (resultSet.next()) {
 
-                if (parts.length == 6) {
-                    Anime anime = new Anime(title, genres, status, rating, episodes);
-                    animeList.add(anime);
-                } else {
-                    System.err.println("Invalid line format: " + line);
-                }
+                int animeId = resultSet.getInt("anime_id");
+                String title = resultSet.getString("title");
+
+                AnimeStatus status = AnimeStatus.valueOf(
+                        resultSet.getString("status").toUpperCase()
+                );
+
+                int episodes = resultSet.getInt("episodes");
+                double rating = resultSet.getDouble("rating");
+
+                List<String> genres = getGenresForAnime(animeId, conn);
+
+                Anime anime = new Anime(title, genres, status, rating, episodes);
+
+                animeList.add(anime);
             }
-            sc.close();
-        
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + filename);
+
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            e.printStackTrace();
         }
+
         return animeList;
     }
 
-     public static void saveAnimeToFile(String filename, ArrayList<Anime> animeList) {
-        try {
-            FileWriter writer = new FileWriter(filename);
-            for (Anime anime : animeList) {
-                writer.write(anime.getAnimeId() + "," + anime.getTitle() + "," + String.join(", ", anime.getGenres()) + "," + anime.getStatus() + "," + anime.getRating() + "," + anime.getEpisodes() + "\n");
+    private static List<String> getGenresForAnime(
+            int animeId,
+            Connection conn) throws SQLException {
+
+        List<String> genres = new ArrayList<>();
+
+        String genreSql = """
+                SELECT g.name
+                FROM genres g
+                JOIN anime_genres ag
+                    ON g.genre_id = ag.genre_id
+                WHERE ag.anime_id = ?
+                ORDER BY g.genre_id
+                """;
+
+        try (PreparedStatement statement = conn.prepareStatement(genreSql)) {
+
+            statement.setInt(1, animeId);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    genres.add(resultSet.getString("name"));
+                }
             }
-            writer.close();
-        } catch (IOException e) {
-            System.err.println("Error writing to file: " + filename);
         }
+
+        return genres;
+    }
+
+    public static Anime getAnimeById(int animeId) {
+
+        String sql = """
+                SELECT *
+                FROM anime
+                WHERE anime_id = ?
+                """;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement(sql)) {
+
+            statement.setInt(1, animeId);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                if (resultSet.next()) {
+
+                    String title = resultSet.getString("title");
+
+                    AnimeStatus status = AnimeStatus.valueOf(
+                            resultSet.getString("status").toUpperCase()
+                    );
+
+                    int episodes = resultSet.getInt("episodes");
+                    double rating = resultSet.getDouble("rating");
+
+                    List<String> genres =
+                            getGenresForAnime(animeId, conn);
+
+                    return new Anime(title, genres, status, rating, episodes);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println(
+                    "Error fetching anime by ID " + animeId + ": " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

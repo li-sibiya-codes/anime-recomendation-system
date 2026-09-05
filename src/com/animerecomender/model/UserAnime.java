@@ -2,12 +2,14 @@ package com.animerecomender.model;
 
 public class UserAnime {
     //represents one users interaction with one anime
+    private User user;
     private Anime anime;
     private UserAnimeStatus status;
     private int episodesWatched;
-    private double rating; 
+    private Double rating; 
 
-    public UserAnime(Anime anime, UserAnimeStatus status, int episodesWatched, double rating) {
+    public UserAnime(User user, Anime anime, UserAnimeStatus status, int episodesWatched, Double rating) {
+        this.user = user;
         this.anime = anime;
         this.status = status;
         this.episodesWatched = episodesWatched;
@@ -15,6 +17,10 @@ public class UserAnime {
     }
 
     // Getters and setters for each field
+    public User getUser() {
+        return user;
+    }
+
     public Anime getAnime() {
         return anime;
     }
@@ -38,14 +44,11 @@ public class UserAnime {
         this.episodesWatched = episodesWatched;
     }
 
-    public double getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
-        if (rating < 0 || rating > 10) {
-            throw new IllegalArgumentException("Rating must be between 0 and 10.");
-        }
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 }
