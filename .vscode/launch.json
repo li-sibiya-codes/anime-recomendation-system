@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CLI",
+            "request": "launch",
+            "mainClass": "com.animerecomender.CLI",
+            "projectName": "anime-recomendation-system_8bc6df25"
+        },
+        {
+            "type": "java",
+            "name": "DatabaseTestCLI",
+            "request": "launch",
+            "mainClass": "com.animerecomender.DatabaseTestCLI",
+            "projectName": "anime-recomendation-system_8bc6df25"
+        },
+        {
+            "type": "java",
             "name": "DatabaseConnection",
             "request": "launch",
             "mainClass": "com.animerecomender.data.DatabaseConnection",
