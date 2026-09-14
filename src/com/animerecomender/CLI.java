@@ -6,7 +6,6 @@ import com.animerecomender.model.User;
 import com.animerecomender.model.UserPreferences;
 import com.animerecomender.recomendation.RecommendationEngine;
 import com.animerecomender.service.AnimeManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public class CLI {
         scanner = new Scanner(System.in);
 
         // Load anime from the database
-        ArrayList<Anime> animeList = AnimeRepository.GetAllAnime();
+        ArrayList<Anime> animeList = AnimeRepository.getAllAnime();
 
         // Give the list to AnimeManager
         animeManager = new AnimeManager(animeList);
@@ -121,6 +120,10 @@ public class CLI {
         System.out.println("6. View My Preferences");
         System.out.println("7. Get Recommendations");
         System.out.println("0. Exit");
+        System.out.println("PLEASE NOTE: ");
+        System.out.println("1. When entering genres for preferences, please enter them exactly as they appear in the anime data.");
+        System.out.println("2. When searching by title, you must enter the exact title as it appears in the anime data.");
+        System.out.println("3. When you must set preferences before getting recommendations, otherwise the system will not be able to provide any recommendations.");
         System.out.println("----------------------------------------");
     }
 

@@ -7,7 +7,7 @@ import java.util.*;
 
 public class AnimeRepository {
 
-    public static ArrayList<Anime> GetAllAnime() {
+    public static ArrayList<Anime> getAllAnime() {
 
         ArrayList<Anime> animeList = new ArrayList<>();
 
@@ -26,16 +26,14 @@ public class AnimeRepository {
                 int animeId = resultSet.getInt("anime_id");
                 String title = resultSet.getString("title");
 
-                AnimeStatus status = AnimeStatus.valueOf(
-                        resultSet.getString("status").toUpperCase()
-                );
+                AnimeStatus status = AnimeStatus.valueOf(resultSet.getString("status").toUpperCase());
 
                 int episodes = resultSet.getInt("episodes");
                 double rating = resultSet.getDouble("rating");
 
                 List<String> genres = getGenresForAnime(animeId, conn);
 
-                Anime anime = new Anime(title, genres, status, rating, episodes);
+                Anime anime = new Anime(animeId, title, genres, status, rating, episodes);
 
                 animeList.add(anime);
             }
@@ -97,17 +95,14 @@ public class AnimeRepository {
 
                     String title = resultSet.getString("title");
 
-                    AnimeStatus status = AnimeStatus.valueOf(
-                            resultSet.getString("status").toUpperCase()
-                    );
+                    AnimeStatus status = AnimeStatus.valueOf(resultSet.getString("status").toUpperCase());
 
                     int episodes = resultSet.getInt("episodes");
                     double rating = resultSet.getDouble("rating");
 
-                    List<String> genres =
-                            getGenresForAnime(animeId, conn);
+                    List<String> genres = getGenresForAnime(animeId, conn);
 
-                    return new Anime(title, genres, status, rating, episodes);
+                    return new Anime(animeId, title, genres, status, rating, episodes);
                 }
             }
 

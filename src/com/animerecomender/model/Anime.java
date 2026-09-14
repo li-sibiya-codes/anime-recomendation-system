@@ -18,6 +18,16 @@ public class Anime {
         this.episodes = episodes;
     }
 
+    public Anime(int animeId, String title, List<String> genres, AnimeStatus status, double rating, int episodes) {
+
+        this.animeId = animeId;
+        this.title = title;
+        this.genres = genres;
+        this.status = status;
+        this.rating = rating;
+        this.episodes = episodes;
+    }
+
     public int getAnimeId() {
         return animeId;
     }
