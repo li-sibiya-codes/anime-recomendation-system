@@ -11,16 +11,9 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
  
 /**
- * CONTRADICTION FIXED: this used to call `new GUI()`, but GUI has no
- * no-arg constructor (and never did — see the Contradictions table in
- * the accompanying analysis).
- *
- * There is currently no login/user-selection feature anywhere in the
- * backend (AnimeManager has no user methods, and CLI.java never calls
- * UserRepository at all). So, exactly like CLI.java's constructor does,
- * this builds one fixed in-memory User for the GUI session rather than
- * inventing a lookup/creation flow that doesn't exist yet. If a real
- * login is added later, only this wiring needs to change.
+* PLEASE USE CLI.java INSTEAD OF Main.java for now
+* The GUI is not fully implemented yet, and the CLI is the only way to interact with the system.
+* this main class is just a placeholder to launch the GUI, which is not fully functional yet.
  */
 public class Main {
  
